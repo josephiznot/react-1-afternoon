@@ -49,43 +49,37 @@ In this step, we are going to dive into the functionality of the application. If
 Let's begin by opening `src/components/TopicBrowser/TopicBrowser.js` and importing `React, { Component }` from `react` at the top of the file. This will allow use to use JSX and create a class that extends on `Component`.
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 ```
 
-Now let's create a basic component that renders a `<p>` element that says "Hello World". We do this by saying `class TopicBrowser extends Component {}`. TopicBrowser is the name of the class, which can be anything you want, usually when dealing with classes it's common to see constructor camel case ( meaning the first letter is also captalized ). In React constructor camel case is required for the name of your class. If it is not constructor camel case the component will not mount or render in your application. Since this component is going to browse our topics, I went with the class name of TopicBrowser. 
+Now let's create a basic component that renders a `<p>` element that says "Hello World". We do this by saying `class TopicBrowser extends Component {}`. TopicBrowser is the name of the class, which can be anything you want, usually when dealing with classes it's common to see constructor camel case ( meaning the first letter is also captalized ). In React constructor camel case is required for the name of your class. If it is not constructor camel case the component will not mount or render in your application. Since this component is going to browse our topics, I went with the class name of TopicBrowser.
 
 ```js
-class TopicBrowser extends Component {
-
-}
+class TopicBrowser extends Component {}
 ```
 
-Now that we have our component `TopicBrowser` let's have it render the `<p>` element. Since we extended on `Component` we have access to a method called `render() {}`. This is the method that is called to render our JSX onto the DOM. Inside the `render` method we use a `return` statement to `return` the JSX that will be rendered. 
+Now that we have our component `TopicBrowser` let's have it render the `<p>` element. Since we extended on `Component` we have access to a method called `render() {}`. This is the method that is called to render our JSX onto the DOM. Inside the `render` method we use a `return` statement to `return` the JSX that will be rendered.
 
 ```js
 class TopicBrowser extends Component {
   render() {
-    return (
-      <p> Hello World </p>
-    )
+    return <p> Hello World </p>;
   }
 }
 ```
 
-Then we need to `export` our `TopicBrowser` component so that other files can `import` it. You may have seen two different ways to accomplish this method. One way is exporting it at the end of the file and another way is doing it on the same line as when you declare your class. 
+Then we need to `export` our `TopicBrowser` component so that other files can `import` it. You may have seen two different ways to accomplish this method. One way is exporting it at the end of the file and another way is doing it on the same line as when you declare your class.
 
 <details>
 
 <summary> <code> TopicBrowser.js ( export on bottom ) </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class TopicBrowser extends Component {
   render() {
-    return (
-      <p> Hello World </p>
-    )
+    return <p> Hello World </p>;
   }
 }
 
@@ -99,13 +93,11 @@ export default TopicBrowser;
 <summary> <code> TopicBrowser.js ( export on same line ) </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class TopicBrowser extends Component {
   render() {
-    return (
-      <p> Hello World </p>
-    )
+    return <p> Hello World </p>;
   }
 }
 ```
@@ -117,21 +109,19 @@ export default class TopicBrowser extends Component {
 Both ways are completely fine, however I'll be using the same line `export`. Now that our `export` is setup we can `import` it in `App.js` and `render` it. We can `import` components with the following format: `import ComponentNameHere from '/file_path_to_component_here'`. Therefore our `import` in `src/components/App.js` would look like:
 
 ```js
-import TopicBrowser from './components/TopicBrowser/TopicBrowser'
+import TopicBrowser from "./components/TopicBrowser/TopicBrowser";
 ```
 
-The `import` is clever enough to add on the `.js` extension for us. Now that `src/components/App.js` has `TopicBrowser` imported we can `render` it the same way rendered our `<p>` element in `TopicBrowser`. The only differencing being to `render` components you wrap the component name in `< />`. Our `src/components/App.js` should now look like: 
+The `import` is clever enough to add on the `.js` extension for us. Now that `src/components/App.js` has `TopicBrowser` imported we can `render` it the same way rendered our `<p>` element in `TopicBrowser`. The only differencing being to `render` components you wrap the component name in `< />`. Our `src/components/App.js` should now look like:
 
 ```js
-import React, { Component } from 'react';
-import './index.css';
-import TopicBrowser from './components/TopicBrowser/TopicBrowser'
+import React, { Component } from "react";
+import "./index.css";
+import TopicBrowser from "./components/TopicBrowser/TopicBrowser";
 
 class App extends Component {
   render() {
-    return (
-      <TopicBrowser />
-    )
+    return <TopicBrowser />;
   }
 }
 
@@ -147,15 +137,13 @@ export default App;
 <summary> <code> App.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
-import './index.css';
-import TopicBrowser from './components/TopicBrowser/TopicBrowser'
+import React, { Component } from "react";
+import "./index.css";
+import TopicBrowser from "./components/TopicBrowser/TopicBrowser";
 
 class App extends Component {
   render() {
-    return (
-      <TopicBrowser />
-    )
+    return <TopicBrowser />;
   }
 }
 
@@ -169,13 +157,11 @@ export default App;
 <summary> <code> TopicBrowser.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class TopicBrowser extends Component {
   render() {
-    return (
-      <p> Hello World </p>
-    )
+    return <p> Hello World </p>;
   }
 }
 ```
@@ -193,7 +179,7 @@ In this step, we'll render all of our topics from the `Topics` folder, create th
 ### Instructions
 
 * Create a basic outline for each topic component ( the same exact way we did the `TopicBrowser` component ):
-  * Make sure the name of the class is the same name as the file. 
+  * Make sure the name of the class is the same name as the file.
   * Have the component render a `<p>` element saying the name of the component.
 * Open `src/components/TopicBrowser/TopicBrowser.js`.
 * Import all the topic files from `src/components/Topics` into `src/components/TopicBrowser/TopicBrowser.js`.
@@ -205,9 +191,10 @@ In this step, we'll render all of our topics from the `Topics` folder, create th
 
 <br />
 
-Let's start by going into our Topics folder. Inside we will see 5 javascript files, inside these files we will create a React component that solves a certain computer science toy problem. The basic outline is going to be similiar across these components with the only difference being the `<p>` element that gets rendered. 
+Let's start by going into our Topics folder. Inside we will see 5 javascript files, inside these files we will create a React component that solves a certain computer science toy problem. The basic outline is going to be similiar across these components with the only difference being the `<p>` element that gets rendered.
 
 Creating a React component:
+
 * `import React, { Component } from 'react'`
 * Create the class for your new component. The format is: `class ClassNameGoesHere extends Component {}`
 * Use the `render() {}` method to get elements to `render` onto the DOM. JSX goes inside a `return` statement of the `render() {}` method.
@@ -216,29 +203,25 @@ Creating a React component:
 Here is what the `EvenAndOdd` component will look like applying these bullet points.
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class EvenAndOdd extends Component {
   render() {
-    return (
-      <p> EvenAndOdd Component </p>
-    )
+    return <p> EvenAndOdd Component </p>;
   }
 }
-```  
+```
 
 <details>
 
 <summary> <code> FilterObject.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class FilterObject extends Component {
   render() {
-    return (
-      <p> FilterObject Component </p>
-    )
+    return <p> FilterObject Component </p>;
   }
 }
 ```
@@ -250,13 +233,11 @@ export default class FilterObject extends Component {
 <summary> <code> FilterString.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class FilterString extends Component {
   render() {
-    return (
-      <p> FilterString Component </p>
-    )
+    return <p> FilterString Component </p>;
   }
 }
 ```
@@ -268,13 +249,11 @@ export default class FilterString extends Component {
 <summary> <code> Palindrome.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Palindrome extends Component {
   render() {
-    return (
-      <p> Palindrome Component </p>
-    )
+    return <p> Palindrome Component </p>;
   }
 }
 ```
@@ -286,13 +265,11 @@ export default class Palindrome extends Component {
 <summary> <code> Sum.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Sum extends Component {
   render() {
-    return (
-      <p> Sum Component </p>
-    )
+    return <p> Sum Component </p>;
   }
 }
 ```
@@ -316,7 +293,7 @@ import Sum from '../Topics/Sum'
 export default class TopicBrowser extends Component {
   render() {
     return (
-      
+
     )
   }
 }
@@ -325,14 +302,14 @@ export default class TopicBrowser extends Component {
 Now that they are imported into our `TopicBrowser` component we can render them in our `return`. Similiar to how we rendered `TopicBrowser` in `App.js` we'll wrap each component we imported in `< />`. Since we are trying to `render` more than component we'll have to wrap the components in a `div`. The `return` of a `render` method can only return one element, but there is no limit to how much you can nest in that one element. Your `TopicBrowser` should look like:
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // Topics
-import EvenAndOdd from '../Topics/EvenAndOdd'
-import FilterObject from '../Topics/FilterObject'
-import FilterString from '../Topics/FilterString'
-import Palindrome from '../Topics/Palindrome'
-import Sum from '../Topics/Sum'
+import EvenAndOdd from "../Topics/EvenAndOdd";
+import FilterObject from "../Topics/FilterObject";
+import FilterString from "../Topics/FilterString";
+import Palindrome from "../Topics/Palindrome";
+import Sum from "../Topics/Sum";
 
 export default class TopicBrowser extends Component {
   render() {
@@ -344,7 +321,7 @@ export default class TopicBrowser extends Component {
         <Palindrome />
         <Sum />
       </div>
-    )
+    );
   }
 }
 ```
@@ -358,14 +335,14 @@ export default class TopicBrowser extends Component {
 <summary> <code> TopicBrowser.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // Topics
-import EvenAndOdd from '../Topics/EvenAndOdd'
-import FilterObject from '../Topics/FilterObject'
-import FilterString from '../Topics/FilterString'
-import Palindrome from '../Topics/Palindrome'
-import Sum from '../Topics/Sum'
+import EvenAndOdd from "../Topics/EvenAndOdd";
+import FilterObject from "../Topics/FilterObject";
+import FilterString from "../Topics/FilterString";
+import Palindrome from "../Topics/Palindrome";
+import Sum from "../Topics/Sum";
 
 export default class TopicBrowser extends Component {
   render() {
@@ -377,7 +354,7 @@ export default class TopicBrowser extends Component {
         <Palindrome />
         <Sum />
       </div>
-    )
+    );
   }
 }
 ```
@@ -389,13 +366,11 @@ export default class TopicBrowser extends Component {
 <summary> <code> EvenAndOdd.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class EvenAndOdd extends Component {
   render() {
-    return (
-      <p> EvenAndOdd Component </p>
-    )
+    return <p> EvenAndOdd Component </p>;
   }
 }
 ```
@@ -407,13 +382,11 @@ export default class EvenAndOdd extends Component {
 <summary> <code> FilterObject.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class FilterObject extends Component {
   render() {
-    return (
-      <p> FilterObject Component </p>
-    )
+    return <p> FilterObject Component </p>;
   }
 }
 ```
@@ -425,13 +398,11 @@ export default class FilterObject extends Component {
 <summary> <code> FilterString.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class FilterString extends Component {
   render() {
-    return (
-      <p> FilterString Component </p>
-    )
+    return <p> FilterString Component </p>;
   }
 }
 ```
@@ -443,13 +414,11 @@ export default class FilterString extends Component {
 <summary> <code> Palindrome.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Palindrome extends Component {
   render() {
-    return (
-      <p> Palindrome Component </p>
-    )
+    return <p> Palindrome Component </p>;
   }
 }
 ```
@@ -461,13 +430,11 @@ export default class Palindrome extends Component {
 <summary> <code> Sum.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Sum extends Component {
   render() {
-    return (
-      <p> Sum Component </p>
-    )
+    return <p> Sum Component </p>;
   }
 }
 ```
@@ -488,7 +455,7 @@ In this step, we'll start with the first topic: `EvenAndOdd`.
 
 <b>The problem summary:</b> Given a string of numbers separated by commas, split the numbers into two different arrays. The first being an array of all the even numbers and the second being an array of all the odd numbers.
 
-<b>The component outline:</b> One parent `div` element, one `h4` element, one `input` element, one `button` element, and two `span` elements. 
+<b>The component outline:</b> One parent `div` element, one `h4` element, one `input` element, one `button` element, and two `span` elements.
 
 * Open `src/components/Topics/EvenAndOdd.js`.
 * Remove the `<p>` element from the `return` of the `render` method.
@@ -560,7 +527,7 @@ render() {
 
 What's `JSON.stringify`? This is not a necassary addition, but without it your array would not display as [1,2,3,4] but rather 1234. `JSON.stringify` gives our display a more readable format. You could just do `this.state.evenArray` or `this.state.oddArray` if you want to.
 
-Next let's update our `input` element to handle user input. In React you can use the `onChange` attribute that calls a function every time a user types in the `input` field. 
+Next let's update our `input` element to handle user input. In React you can use the `onChange` attribute that calls a function every time a user types in the `input` field.
 
 ```js
 render() {
@@ -621,18 +588,17 @@ How you solve the toy problem is up to you, if you can't figure it out check out
 <summary> <code> EvenAndOdd.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class EvenAndOdd extends Component {
-
   constructor() {
     super();
 
     this.state = {
       evenArray: [],
       oddArray: [],
-      userInput: ''
-    }
+      userInput: ""
+    };
   }
 
   handleChange(val) {
@@ -640,18 +606,18 @@ export default class EvenAndOdd extends Component {
   }
 
   assignEvenAndOdds(userInput) {
-    var arr = userInput.split(',');
+    var arr = userInput.split(",");
     var evens = [];
     var odds = [];
 
-    for ( var i = 0; i < arr.length; i++ ) {
-      if ( arr[i] % 2 === 0 ) {
-        evens.push( parseInt(arr[i], 10) );
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] % 2 === 0) {
+        evens.push(parseInt(arr[i], 10));
       } else {
-        odds.push( parseInt(arr[i], 10) );
+        odds.push(parseInt(arr[i], 10));
       }
     }
-    
+
     this.setState({ evenArray: evens, oddArray: odds });
   }
 
@@ -659,23 +625,40 @@ export default class EvenAndOdd extends Component {
     return (
       <div className="puzzleBox evenAndOddPB">
         <h4> Evens and Odds </h4>
-        <input className="inputLine" onChange={ (e) => this.handleChange(e.target.value) }></input>
-        <button className="confirmationButton" onClick={ () => { this.assignEvenAndOdds(this.state.userInput) }}> Split </button>
-        <span className="resultsBox"> Evens: { JSON.stringify(this.state.evenArray) } </span>
-        <span className="resultsBox"> Odds: { JSON.stringify(this.state.oddArray) } </span>
+        <input
+          className="inputLine"
+          onChange={e => this.handleChange(e.target.value)}
+        />
+        <button
+          className="confirmationButton"
+          onClick={() => {
+            this.assignEvenAndOdds(this.state.userInput);
+          }}
+        >
+          {" "}
+          Split{" "}
+        </button>
+        <span className="resultsBox">
+          {" "}
+          Evens: {JSON.stringify(this.state.evenArray)}{" "}
+        </span>
+        <span className="resultsBox">
+          {" "}
+          Odds: {JSON.stringify(this.state.oddArray)}{" "}
+        </span>
       </div>
-    )
+    );
   }
 }
 ```
 
 </details>
 
-<br /> 
+<br />
 
 <img src="https://github.com/DevMountain/react-1-afternoon/blob/solution/readme/1g.gif" />
 
-## Step 4 
+## Step 4
 
 ### Summary
 
@@ -730,7 +713,7 @@ Let's begin by rendering our component's outline.
   }
 ```
 
-Now that we have a rough draft of everything our component will need, let's start filling in the functionality. We will use state to keep tracck of what the user input is, our unfiltered array, and our filtered array. 
+Now that we have a rough draft of everything our component will need, let's start filling in the functionality. We will use state to keep tracck of what the user input is, our unfiltered array, and our filtered array.
 
 ```js
   constructor() {
@@ -827,34 +810,33 @@ How you solve the toy problem is up to you, if you can't figure it out check out
 <summary> <code> FilterObject.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class FilterObject extends Component {
-
   constructor() {
     super();
 
     this.state = {
       employees: [
         {
-          name: 'Jimmy Joe',
-          title: 'Hack0r',
-          age: 12,
+          name: "Jimmy Joe",
+          title: "Hack0r",
+          age: 12
         },
         {
-          name: 'Jeremy Schrader',
+          name: "Jeremy Schrader",
           age: 24,
-          hairColor: 'brown'
+          hairColor: "brown"
         },
         {
-          name: 'Carly Armstrong',
-          title: 'CEO',
+          name: "Carly Armstrong",
+          title: "CEO"
         }
       ],
 
-      userInput: '',
+      userInput: "",
       filteredEmployees: []
-    }
+    };
   }
 
   handleChange(val) {
@@ -864,9 +846,9 @@ export default class FilterObject extends Component {
   filterEmployees(prop) {
     var employees = this.state.employees;
     var filteredEmployees = [];
-    
-    for ( var i = 0; i < employees.length; i++ ) {
-      if ( employees[i].hasOwnProperty(prop) ) {
+
+    for (var i = 0; i < employees.length; i++) {
+      if (employees[i].hasOwnProperty(prop)) {
         filteredEmployees.push(employees[i]);
       }
     }
@@ -878,25 +860,44 @@ export default class FilterObject extends Component {
     return (
       <div className="puzzleBox filterObjectPB">
         <h4> Filter Object </h4>
-        <span className="puzzleText"> Original: { JSON.stringify(this.state.employees, null, 10) } </span>
-        <input className="inputLine" onChange={ (e) => this.handleChange(e.target.value) }></input>
-        <button className="confirmationButton" onClick={ () => this.filterEmployees(this.state.userInput) }> Filter </button>
-        <span className="resultsBox filterObjectRB"> Filtered: { JSON.stringify(this.state.filteredEmployees, null, 10) } </span>
+        <span className="puzzleText">
+          {" "}
+          Original: {JSON.stringify(this.state.employees, null, 10)}{" "}
+        </span>
+        <input
+          className="inputLine"
+          onChange={e => this.handleChange(e.target.value)}
+        />
+        <button
+          className="confirmationButton"
+          onClick={() => this.filterEmployees(this.state.userInput)}
+        >
+          {" "}
+          Filter{" "}
+        </button>
+        <span className="resultsBox filterObjectRB">
+          {" "}
+          Filtered: {JSON.stringify(
+            this.state.filteredEmployees,
+            null,
+            10
+          )}{" "}
+        </span>
       </div>
-    )
+    );
   }
 }
 ```
 
 </details>
 
-<br /> 
+<br />
 
 <img src="https://github.com/DevMountain/react-1-afternoon/blob/solution/readme/2g.gif" />
 
 ## Step 5
 
-### Summary 
+### Summary
 
 In this step, we'll build out the `FilterString` component.
 
@@ -1030,16 +1031,24 @@ How you solve the toy problem is up to you, if you can't figure it out check out
 <summary> <code> FilterString.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class FilterString extends Component {
-  
   constructor() {
     super();
 
     this.state = {
-      names: ['James', 'Jessica', 'Melody', 'Tyler', 'Blake', 'Jennifer', 'Mark', 'Maddy'],
-      userInput: '',
+      names: [
+        "James",
+        "Jessica",
+        "Melody",
+        "Tyler",
+        "Blake",
+        "Jennifer",
+        "Mark",
+        "Maddy"
+      ],
+      userInput: "",
       filteredNames: []
     };
   }
@@ -1052,8 +1061,8 @@ export default class FilterString extends Component {
     var names = this.state.names;
     var filteredNames = [];
 
-    for ( var i = 0; i < names.length; i++ ) {
-      if ( names[i].includes(userInput) ) {
+    for (var i = 0; i < names.length; i++) {
+      if (names[i].includes(userInput)) {
         filteredNames.push(names[i]);
       }
     }
@@ -1065,12 +1074,31 @@ export default class FilterString extends Component {
     return (
       <div className="puzzleBox filterStringPB">
         <h4> Filter String </h4>
-        <span className="puzzleText"> Names: { JSON.stringify(this.state.names, null, 10) } </span>
-        <input className="inputLine" onChange={ (e) => this.handleChange(e.target.value) }></input>
-        <button className="confirmationButton" onClick={ () => this.filterNames(this.state.userInput) }> Filter </button>
-        <span className="resultsBox filterStringRB"> Filtered Names: { JSON.stringify(this.state.filteredNames, null, 10) } </span>
+        <span className="puzzleText">
+          {" "}
+          Names: {JSON.stringify(this.state.names, null, 10)}{" "}
+        </span>
+        <input
+          className="inputLine"
+          onChange={e => this.handleChange(e.target.value)}
+        />
+        <button
+          className="confirmationButton"
+          onClick={() => this.filterNames(this.state.userInput)}
+        >
+          {" "}
+          Filter{" "}
+        </button>
+        <span className="resultsBox filterStringRB">
+          {" "}
+          Filtered Names: {JSON.stringify(
+            this.state.filteredNames,
+            null,
+            10
+          )}{" "}
+        </span>
       </div>
-    )
+    );
   }
 }
 ```
@@ -1089,7 +1117,7 @@ In this step, we'll build out the `Palindrome` component.
 
 ### Instructions
 
-<b>The problem summary:</b> Using a given string, determine if it is spelt the same backwards as it is forwards. 
+<b>The problem summary:</b> Using a given string, determine if it is spelt the same backwards as it is forwards.
 
 <b>The component outline:</b> One parent `div` element, one `h4` element, one `input` element, one `button` element, and one `span` element.
 
@@ -1209,16 +1237,15 @@ How you solve the toy problem is up to you, if you can't figure it out check out
 <summary> <code> Palindrome.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Palindrome extends Component {
-
   constructor() {
     super();
 
     this.state = {
-      userInput: '',
-      palindrome: ''
+      userInput: "",
+      palindrome: ""
     };
   }
 
@@ -1229,14 +1256,14 @@ export default class Palindrome extends Component {
   isPalindrome(userInput) {
     var forwards = userInput;
     var backwards = userInput;
-    backwards = backwards.split('');
+    backwards = backwards.split("");
     backwards = backwards.reverse();
-    backwards = backwards.join('');
+    backwards = backwards.join("");
 
-    if ( forwards === backwards ) {
-      this.setState({ palindrome: 'true' });
+    if (forwards === backwards) {
+      this.setState({ palindrome: "true" });
     } else {
-      this.setState({ palindrome: 'false' });
+      this.setState({ palindrome: "false" });
     }
   }
 
@@ -1244,11 +1271,23 @@ export default class Palindrome extends Component {
     return (
       <div className="puzzleBox palindromePB">
         <h4> Palindrome </h4>
-        <input className="inputLine" onChange={ (e) => this.handleChange(e.target.value) }></input>
-        <button className="confirmationButton" onClick={ () => this.isPalindrome(this.state.userInput) }> Check </button>
-        <span className="resultsBox"> Palindrome: { this.state.palindrome } </span>
+        <input
+          className="inputLine"
+          onChange={e => this.handleChange(e.target.value)}
+        />
+        <button
+          className="confirmationButton"
+          onClick={() => this.isPalindrome(this.state.userInput)}
+        >
+          {" "}
+          Check{" "}
+        </button>
+        <span className="resultsBox">
+          {" "}
+          Palindrome: {this.state.palindrome}{" "}
+        </span>
       </div>
-    )
+    );
   }
 }
 ```
@@ -1398,10 +1437,9 @@ How you solve the toy problem is up to you, if you can't figure it out check out
 <summary> <code> Sum.js </code> </summary>
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class Sum extends Component {
-
   constructor() {
     super();
 
@@ -1409,7 +1447,7 @@ export default class Sum extends Component {
       number1: 0,
       number2: 0,
       sum: null
-    }
+    };
   }
 
   updateNumber1(val) {
@@ -1428,12 +1466,26 @@ export default class Sum extends Component {
     return (
       <div className="puzzleBox sumPB">
         <h4> Sum </h4>
-        <input className="inputLine" type="number" onChange={ (e) => this.updateNumber1(e.target.value) }></input>
-        <input className="inputLine" type="number" onChange={ (e) => this.updateNumber2(e.target.value) }></input>
-        <button className="confirmationButton" onClick={ () => this.add(this.state.number1, this.state.number2) }> Add </button>
+        <input
+          className="inputLine"
+          type="number"
+          onChange={e => this.updateNumber1(e.target.value)}
+        />
+        <input
+          className="inputLine"
+          type="number"
+          onChange={e => this.updateNumber2(e.target.value)}
+        />
+        <button
+          className="confirmationButton"
+          onClick={() => this.add(this.state.number1, this.state.number2)}
+        >
+          {" "}
+          Add{" "}
+        </button>
         <span className="resultsBox"> Sum: {this.state.sum} </span>
       </div>
-    )
+    );
   }
 }
 ```
@@ -1459,5 +1511,3 @@ If you see a problem or a typo, please fork, make the necessary changes, and cre
 <p align="center">
 <img src="https://devmounta.in/img/logowhiteblue.png" width="250">
 </p>
-
-
